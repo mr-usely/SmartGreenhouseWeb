@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <title>Arduino Monitoring</title>
+    <!-- Favicon -->
+    <link rel="icon" href="http://icons.iconarchive.com/icons/bokehlicia/captiva/128/rocket-icon.png" type="image/x-icon" />
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/guages.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Slider -->
+    <link href="css/slider/freshslider.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand pull-left " href="#" id="menu-toggle"><span class="glyphicon glyphicon-chevron-left soft-white"></span></a>
+                <a class="navbar-brand pull-left" id='space' href="#">STAY ONLINE</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="#">Module</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>&nbsp; Administrator <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Logout</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <div class="user-panel">
+            <div class="image pull-left">
+                <a href=""><img src="img/rocket.png" class="img-circle" alt="User Image"></a>
+            </div>
+            <div class="slogan pull-right">
+                <h3 class="pull-left">Arduino</h3>
+                <br>
+                <h5 class="pull-left">Monitoring Systems</h5>
+            </div>
+        </div>
+        
+        <ul class="sidebar-nav">
+            <li>
+                <h3>NAVIGATION</h3>
+            </li>
+            <li>
+                <a href="#"><span class="glyphicon glyphicon-blackboard"></span>&nbsp; Dashboard</a>
+            </li>
+            <li id="active">
+                <a href="#"><span class="glyphicon glyphicon-scale"></span>&nbsp; Temperature</a>
+            </li>
+            <li>
+                <a href="#"><span class="glyphicon glyphicon-sort"></span>&nbsp; Switches</a>
+            </li>
+            <li>
+                <a href="#"><span class="glyphicon glyphicon-tint"></span>&nbsp; Wather</a>
+            </li>
+            <li>
+                <a href="#"><span class="glyphicon glyphicon-file"></span>&nbsp; To Do List</a>
+            </li>
+            <li>
+                <h3>CONFIGURATION</h3>
+            </li>
+            <li>
+                <a href="#"><span class="glyphicon glyphicon-cd"></span>&nbsp; Database</a>
+            </li>
+            <li>
+                <a href="#"><span class="glyphicon glyphicon-list"></span>&nbsp; Tables</a>
+            </li>
+            <li>
+                <a href="#"><span class="glyphicon glyphicon-dashboard"></span>&nbsp; Sensors</a>
+            </li>
+            <li>
+                <a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp; Users</a>
+            </li>
+            <li>
+                <h3>DOCUMENTATION</h3>
+            </li>
+            <li>
+                <a href="#"><span class="glyphicon glyphicon-book"></span>&nbsp; Documentation</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="content-header">
+                        <h1>
+                            Dashboard
+                            <small>Short Statistic</small>
+                        </h1>
+                    </section>
+                </div>
+            </div>
+            <hr class="style-four">
+            <div class="row">            
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-purple"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span></span>
+                <div class="info-box-content">
+                  <span class="info-box-text text-muted">Tasks</span>
+                  <span class="info-box-number">5</span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-green"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></span>
+                <div class="info-box-content">
+                  <span class="info-box-text text-muted">Sensors</span>
+                  <span class="info-box-number">410</span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-orange"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></span>
+                <div class="info-box-content">
+                  <span class="info-box-text text-muted">Logs</span>
+                  <span class="info-box-number">13,648</span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-red"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span></span>
+                <div class="info-box-content">
+                  <span class="info-box-text text-muted">Warnings</span>
+                  <span class="info-box-number">93,139</span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+            
+            
+            <hr class="style-four">
+            
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="row">
+                        <div class="col-md-6 col-md-6 col-sm-6">
+                            <div id="g1" class="gauge float-right"></div>
+                        </div>
+                        <div class="col-md-6 col-md-6 col-sm-6">
+                            <h4>04.12.2015<small class="pull-right"> Statistic</small></h4>
+                            <table class="table table-condensed">
+                                <tbody>
+                                  <tr>
+                                    <td>Max</td>
+                                    <td>25</td>
+                                    <td>15:06:45</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Min</td>
+                                    <td>15</td>
+                                    <td>08:02:13</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Average</td>
+                                    <td>21</td>
+                                    <td>Today</td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                            
+                            <a href="#" id="g1_refresh" class="btn btn-default btn-sm pull-left">Refresh</a>
+                            <a href="#" class="btn btn-success btn-sm pull-right">Show Statistic</a>
+                            
+                            
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function(event) {
+                                    var g1 = new JustGage({
+                                        id: "g1",
+                                        title: "Indoor temperature",
+                                        value: 35,
+                                        min: -20,
+                                        max: 50,
+                                        decimals: 0,
+                                        gaugeWidthScale: 0.6
+                                    });
+                                    document.getElementById('g1_refresh').addEventListener('click', function() {
+                                        g1.refresh(getRandomInt(-20, 50));
+                                    });                       
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div style="width:100%; padding-left: 20px; padding-right: 20px;">
+                            <div>
+                                <canvas id="canvas-line" height="75px"></canvas>
+                            </div>
+                        </div>
+
+                        <script>
+                            var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+                            var lineChartData = {
+                                labels : ["January","February","March","April","May","June","July"],
+                                datasets : [
+                                    {
+                                        label: "My Second dataset",
+                                        fillColor : "rgba(151,187,205,0.2)",
+                                        strokeColor : "rgba(151,187,205,1)",
+                                        pointColor : "rgba(151,187,205,1)",
+                                        pointStrokeColor : "#fff",
+                                        pointHighlightFill : "#fff",
+                                        pointHighlightStroke : "rgba(151,187,205,1)",
+                                        data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+                                    },
+                                ]
+                    
+                            }
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <hr class="style-four">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="row">
+                        <div class="col-md-6 col-md-6 col-sm-6">
+                            <div id="g2" class="gauge float-right"></div>
+                        </div>
+                        <div class="col-md-6 col-md-6 col-sm-6">
+                            <h4>04.12.2015<small class="pull-right"> Statistic</small></h4>
+                            <table class="table table-condensed">
+                                <tbody>
+                                  <tr>
+                                    <td>Max</td>
+                                    <td>25</td>
+                                    <td>15:06:45</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Min</td>
+                                    <td>15</td>
+                                    <td>08:02:13</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Average</td>
+                                    <td>21</td>
+                                    <td>Today</td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                            
+                            <a href="#" id="g2_refresh" class="btn btn-default btn-sm pull-right">Show Statistic</a>
+                            
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function(event) {
+                                    var g2 = new JustGage({
+                                        id: "g2",
+                                        title: "Indoor temperature",
+                                        value: 15,
+                                        min: -20,
+                                        max: 50,
+                                        decimals: 0,
+                                        gaugeWidthScale: 0.6
+                                    });
+                                    document.getElementById('g2_refresh').addEventListener('click', function() {
+                                        g2.refresh(getRandomInt(-20, 50));
+                                    });                       
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="style-four">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div style="width: 100%">
+                                <canvas id="canvas" height="360"></canvas>
+                            </div>
+                        
+                            <script>
+                            var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+                        
+                            var barChartData = {
+                                labels : ["Level"],
+                                datasets : [
+                                    {
+                                        fillColor : "rgba(70, 149, 201, 0.7)",
+                                        strokeColor : "rgba(220,220,220,0.8)",
+                                        highlightFill: "rgba(70, 149, 201, 0.9)",
+                                        highlightStroke: "rgba(220,220,220,1)",
+                                        data : [60],
+                                    },
+                                ]
+                            }
+                            window.onload = function(){
+                                var ctx = document.getElementById("canvas").getContext("2d");
+                                window.myBar = new Chart(ctx).Bar(barChartData, {
+                                    animationSteps: 15,
+                                    scaleOverride : true,
+                                    scaleSteps : 10,
+                                    scaleStepWidth : 10,
+                                    scaleStartValue : 0,                               
+                                });
+                                
+                                var ctx = document.getElementById("canvas-line").getContext("2d");
+                                window.myLine = new Chart(ctx).Line(lineChartData, {
+                                    responsive: true
+                                });
+                            }
+                            </script>
+                        </div> <!-- Bar Chart-->
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <!-- Table -->
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="3" class="vert-align td-center">
+                                            <small>Set Wather Level</small>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <div id="unranged-value" style="margin: 0"></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="vert-align td-center">Wather Pump</td>
+                                        <td class="td-center">
+                                            <a href="#" class="btn btn-sm btn-success btn-block" role="button"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> <b>On</b></a>
+                                        </td>
+                                        <td class="vert-align td-center">21</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="vert-align td-center">Empty Valve</td>
+                                        <td class="td-center">
+                                            <a href="#" class="btn btn-sm btn-default btn-block" role="button"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> <b>Off<b></a>
+                                        </td>
+                                        <td class="vert-align td-center">21</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="vert-align td-center">Check Level</td>
+                                        <td class="td-center">
+                                            <a href="#" class="btn btn-sm btn-info btn-block" role="button"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> <b>Refresh<b></a>
+                                        </td>
+                                        <td class="vert-align td-center">&nbsp;</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-12col-md-12 col-sm-12">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <!-- Table -->
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                              <th>Info</th>
+                                              <th>Status</th>
+                                              <th>Date</th>
+                                              <th>Time</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="vert-align">Wather Level</td>
+                                                <td>
+                                                    <span class="label label-success">70%</span>
+                                                </td>
+                                                <td class="vert-align">Today</td>
+                                                <td class="vert-align">15:06:45</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="vert-align">Max Level</td>
+                                                <td>
+                                                    <span class="label label-danger">98%</span>
+                                                </td>
+                                                <td class="vert-align">15:10:21</td>
+                                                <td>08:02:13</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="vert-align">Min Level</td>
+                                                <td>
+                                                    <span class="label label-primary">8%</span>
+                                                </td>
+                                                <td class="vert-align">05:08:21</td>
+                                                <td>08:02:13</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="vert-align">Last Change</td>
+                                                <td>
+                                                    <span class="label label-warning">Admin</span>
+                                                </td>
+                                                <td class="vert-align">05:08:21</td>
+                                                <td>08:02:13</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="style-four">
+            <div class="row">
+                <div class="container-fluid">
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <img src="img/on.png" alt="Cinque Terre" style="height: 130px; padding: 20px;"> 
+                            </div>
+                            <div class="col-lg-10">
+                                <table class="table table-condensed">
+                                    <tbody>
+                                        <tr>
+                                            <td class="vert-align">Central Room</td>
+                                            <td>
+                                                <input id="switch-state" type="checkbox">
+                                            </td>
+                                            <td class="vert-align">25</td>
+                                            <td class="vert-align">15:06:45</td>
+                                            <td class="vert-align">Admin</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="vert-align">Entrance</td>
+                                            <td>
+                                                <input id="switch-state" type="checkbox" checked>
+                                            </td>
+                                            <td class="vert-align">15</td>
+                                            <td>08:02:13</td>
+                                            <td class="vert-align">Admin</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="vert-align">Bed Room</td>
+                                            <td>
+                                                <input id="switch-state" type="checkbox" checked>
+                                            </td>
+                                            <td class="vert-align">21</td>
+                                            <td class="vert-align">Today</td>
+                                            <td class="vert-align">User</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="style-four">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <button type="button" class="btn btn-primary btn-sm">Primary</button>
+                        <button type="button" class="btn btn-success btn-sm">Primary</button>
+                        <div class="btn-group pull-right" role="group" aria-label="...">
+                            <button type="button" class="btn btn-default">Left</button>
+                            <button type="button" class="btn btn-default">Middle</button>
+                            <button type="button" class="btn btn-default">Right</button>
+                        </div>
+                    </div>
+                </div>
+            <hr class="style-four">
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <section class="content-header">
+                        <h1>
+                            To Do Tasks
+                            <small>Short List</small>
+                        </h1>
+                    </section>
+                </div>
+                <div class="col-lg-3 pull-right">
+                    <div class="input-group pull-right"> 
+                        <input id="filter" type="text" class="form-control" placeholder="Type here...">
+                        <span class="input-group-addon">Filter</span>
+                    </div>
+                </div>
+            </div>
+            <hr class="style-four">
+            <div class="row">
+                <div class="col-xs-12">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                              <th>ID</th>
+                              <th>User</th>
+                              <th>Date</th>
+                              <th>Status</th>
+                              <th>Reason</th>
+                            </tr>
+                        </thead>
+                        <tbody class="searchable">
+                            <tr>
+                              <td>183</td>
+                              <td>John Doe</td>
+                              <td>11-07-2014</td>
+                              <td><span class="label label-success">Approved</span></td>
+                              <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                            </tr>
+                            <tr>
+                              <td>219</td>
+                              <td>Alexander Pierce</td>
+                              <td>11-07-2014</td>
+                              <td><span class="label label-warning">Pending</span></td>
+                              <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                            </tr>
+                            <tr>
+                              <td>657</td>
+                              <td>Bob Doe</td>
+                              <td>11-07-2014</td>
+                              <td><span class="label label-primary">Approved</span></td>
+                              <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                            </tr>
+                            <tr>
+                              <td>175</td>
+                              <td>Mike Doe</td>
+                              <td>11-07-2014</td>
+                              <td><span class="label label-danger">Denied</span></td>
+                              <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+            <hr class="style-four">
+            <footer class="footer">    
+                  <p class="text-muted pull-left">Arduino Monitoring System &copy 2015</p>
+                  <p class="text-muted pull-right">Designed by <a href="">Nika Kobaidze</a></p>
+            </footer>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    
+    <!-- SWITCH SECTION -->
+    <link href="css/switch/bootstrap-switch.css" rel="stylesheet">
+    <script src="js/switch/highlight.js"></script>
+    <script src="js/switch/bootstrap-switch.js"></script>
+    <script src="js/switch/main.js"></script>
+
+    <!-- GUAGE SECTION -->
+    <script src="js/guage/raphael-2.1.4.min.js"></script>
+    <script src="js/guage/justgage-1.1.0.min.js"></script>
+    <!-- Menu Toggle Script -->
+    <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.10/js/dataTables.bootstrap.min.js"></script>
+    <!-- Chart js library -->
+    <script src="js/chart/Chart.js"></script>
+    <!-- Slider -->
+    <script src="js/slider/freshslider.min.js"></script>
+    
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+    </script>
+    <script>
+        $(document).ready(function () {
+            (function ($) {
+                $('#filter').keyup(function () {
+                    var rex = new RegExp($(this).val(), 'i');
+                    $('.searchable tr').hide();
+                    $('.searchable tr').filter(function () {
+                        return rex.test($(this).text());
+                    }).show();
+                })
+            }(jQuery));
+        });
+    </script>
+    <script>
+        var s2 = $("#unranged-value").freshslider({
+            step: 1,
+            value:50,
+            onchange:function(value){
+                console.log(value);
+            }
+        });
+    </script>
+
+</body>
+
+</html>
